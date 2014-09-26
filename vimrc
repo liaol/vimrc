@@ -6,7 +6,6 @@ if !filereadable(vundle_readme)
           silent !mkdir -p ~/.vim/bundle
             silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
               let iCanHazVundle=0
-          endif
 endif
 
 " Use Vundle to manage bundles
@@ -18,6 +17,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'jistr/vim-nerdtree-tabs'
+
 source ~/.vim/vimrc.vundle 
 "call vundle#end()
 "--------------------
