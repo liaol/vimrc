@@ -500,3 +500,4 @@ execute pathogen#infect()
 "set background=dark
 colorscheme desert
 let g:tagbar_phpctags_bin='~/.vim/bundle/tagbar-phpctags/bin/phpctags'
+set term=xterm
