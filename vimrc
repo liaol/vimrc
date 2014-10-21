@@ -17,6 +17,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'vim-scripts/DoxygenToolkit.vim'
 
 source ~/.vim/vimrc.vundle 
 "call vundle#end()
@@ -224,7 +225,7 @@ endfun
 "---------------------------------------------
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "autocmd FileType c set omnifunc=ccomplete#Complete
 "autocmd FileType java set omnifunc=javacomplete#Complete
@@ -501,3 +502,13 @@ execute pathogen#infect()
 colorscheme desert
 let g:tagbar_phpctags_bin='~/.vim/bundle/tagbar-phpctags/bin/phpctags'
 set term=xterm
+
+"注释插件
+let g:DoxygenToolkit_commentType ="php"
+let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
+let g:DoxygenToolkit_paramTag_pre="@Param " 
+let g:DoxygenToolkit_returnTag="@Returns   " 
+"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
+"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
+let g:DoxygenToolkit_authorName="Liao" 
+let g:DoxygenToolkit_licenseTag="Mit"
