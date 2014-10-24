@@ -18,7 +18,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
-
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'einars/js-beautify'
 source ~/.vim/vimrc.vundle 
 "call vundle#end()
 "--------------------
@@ -148,6 +149,9 @@ map <leader>er :bo cope<CR>
 map <leader>] :cn<CR>
 " move to the prev error
 map <leader>[ :cp<CR>
+"格式化html js代码
+map <leader>h :call HtmlBeautify()<CR>
+map <leader>j :call JsBeautify()<CR>
 
 " --- move around splits
 " move to and maximize the below split 
@@ -162,10 +166,10 @@ set wmw=0			" set the min width of a window to 0 so we can maximize others
 set wmh=0			" set the min height of a window to 0 so we can maximize others
 
 " --- move to splitted windok
-map <leader>h :wincmd h<CR> 
-map <leader>j :wincmd j<CR> 
-map <leader>k :wincmd k<CR> 
-map <leader>l :wincmd l<CR> 
+"map <leader>h :wincmd h<CR> 
+"map <leader>j :wincmd j<CR> 
+"map <leader>k :wincmd k<CR> 
+"map <leader>l :wincmd l<CR> 
 
 " Quickly resize windows use +/-
 map - <C-W>-
@@ -471,8 +475,8 @@ map <C-\> :bel 8sp <CR>:exec("tag ".expand("<cword>"))<CR>
 "--------------------
 "autocmd FileType javascript set makeprg=~/bin/jsl\ -nologo\ -nofilelisting\ -nosummary\ -nocontext\ -conf\ ~/bin/jsl.default.conf\ -process\ %
 "autocmd FileType javascript set errorformat=%f(%l):\ %m
-"autocmd FileType javascript inoremap <silent> <F9> <C-O>:make<CR>
-"autocmd FileType javascript map <silent> <F9> :make<CR>
+"autocmd FileType javascript inoremap <silent> <F8> <C-O>:make<CR>
+"autocmd FileType javascript map <silent> <F8> :make<CR>
 
 "--------------------
 " for using php-cs-fixer
@@ -512,3 +516,4 @@ let g:DoxygenToolkit_returnTag="@Returns   "
 "let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
 let g:DoxygenToolkit_authorName="Liao" 
 let g:DoxygenToolkit_licenseTag="Mit"
+noremap <C-V> <C-V>
