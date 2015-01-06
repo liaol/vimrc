@@ -227,7 +227,8 @@ endfun
 "---------------------------------------------
 " Enable omni completion. (Ctrl-X Ctrl-O)
 "---------------------------------------------
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -330,13 +331,13 @@ let g:tagbar_autofocus = 1
 " set default width of the Tagbar window
 let g:tagbar_width = 30
 " markdown support
-let g:tagbar_type_markdown = {
-			\ 'ctagstype': 'markdown',
-			\ 'kinds': [ 'h:Heading_L1', 'i:Heading_L2', 'k:Heading_L3' ]
-			\ }
-" --- NERDTree
-nnoremap <silent> <F9> :NERDTreeToggle<CR>
-nnoremap <leader>n :NERDTreeToggle<CR>
+"let g:tagbar_type_markdown = {
+"			\ 'ctagstype': 'markdown',
+"			\ 'kinds': [ 'h:Heading_L1', 'i:Heading_L2', 'k:Heading_L3' ]
+"			\ }
+"" --- NERDTree
+nnoremap <silent> <F9> :NERDTreeTabsToggle<CR>
+nnoremap <leader>n :NERDTreeTabsToggle<CR>
 " Close vim if the only window left open is the NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
