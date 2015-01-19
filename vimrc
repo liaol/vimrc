@@ -42,16 +42,16 @@ syntax on			" syntax highlight
 set hlsearch		" search highlighting
 
 " terminal color settings
-"if has("gui_running")	" GUI color and font settings
-"	set guifont=Courier:h18
-"	set background=dark 
-"	set t_Co=256		" 256 color mode
-"	set cursorline	" highlight current line
-"	highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
-"	colors moria
-"else
-"	colors evening
-"endif
+if has("gui_running")	" GUI color and font settings
+	set guifont=Courier:h18
+	set background=dark 
+	set t_Co=256		" 256 color mode
+	set cursorline	" highlight current line
+	highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
+	colors moria
+else
+	colors evening
+endif
 
 set clipboard=unnamed	" yank to the system register (*) by default
 set showmatch		" Cursor shows matching ) and }
