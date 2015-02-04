@@ -8,24 +8,24 @@
 " NOTE: comments after Bundle command are not allowed..
  
 " general 
-Bundle 'Townk/vim-autoclose'
-Bundle 'mileszs/ack.vim'
-Bundle 'thisivan/vim-bufexplorer' 
+"Bundle 'Townk/vim-autoclose'
+"Bundle 'mileszs/ack.vim'
+"Bundle 'thisivan/vim-bufexplorer' 
 ""Bundle 'xolox/vim-easytags'
 Bundle 'majutsushi/tagbar'
 Bundle 'techlivezheng/tagbar-phpctags'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter.git'
-Bundle 'vim-scripts/YankRing.vim.git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-endwise'
-Bundle 'sukima/xmledit.git'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'vim-scripts/YankRing.vim.git'
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'tpope/vim-repeat'
+"Bundle 'tpope/vim-surround'
+"Bundle 'tpope/vim-eunuch'
+"Bundle 'tpope/vim-markdown'
+"Bundle 'tpope/vim-endwise'
+"Bundle 'sukima/xmledit.git'
+"Bundle 'vim-scripts/matchit.zip'
+"Bundle 'Lokaltog/vim-easymotion'
 "AutoComplete & snippets
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
@@ -33,13 +33,13 @@ Bundle 'Shougo/neosnippet'
 "Syntac checking for lots of languages
 Bundle "scrooloose/syntastic"
 "File fuzzy search
-Bundle "kien/ctrlp.vim"
+"Bundle "kien/ctrlp.vim"
 
 "--------------------
 " for php
 "--------------------
 Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'arnaud-lb/vim-php-namespace'
+"Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'shawncplus/phpcomplete.vim'
 "Note: The follow plugin may cause wrong display of block comment
 "Bundle 'shawncplus/php.vim'
@@ -50,14 +50,14 @@ Bundle 'shawncplus/phpcomplete.vim'
 "--------------------
 " for html, haml, sass
 "--------------------
-Bundle 'concise/vim-html5-fix'
+"Bundle 'concise/vim-html5-fix'
 "Bundle 'tpope/vim-haml'
 
 "--------------------
 " for javascript
 "--------------------
-Bundle 'pangloss/vim-javascript'
-Bundle 'itspriddle/vim-jquery'
+"Bundle 'pangloss/vim-javascript'
+"Bundle 'itspriddle/vim-jquery'
 "Bundle 'hallettj/jslint.vim'
 
 " non github repos

@@ -1,0 +1,109 @@
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+      echo "Installing Vundle.."
+      echo ""
+      silent !mkdir -p ~/.vim/bundle
+      silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+      let iCanHazVundle=0
+endif
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'vim-scripts/DoxygenToolkit.vim'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'einars/js-beautify'
+"source ~/.vim/vimrc.vundle 
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
+filetype plugin indent on  
+
+set bs=indent,eol,start	" allow backspacing over everything in insert mode
+set history=100		" keep 100 lines of command line history
+set ruler			" show the cursor position all the time
+set ar				" auto read when file is changed from outside
+set nu				" show line numbers
+
+" auto reload vimrc when editing it
+autocmd! bufwritepost .vimrc source ~/.vimrc
+
+syntax on			" syntax highlight
+set hlsearch		" search highlighting
+
+" terminal color settings
+if has("gui_running")	" GUI color and font settings
+	set guifont=Courier:h18
+	set background=dark 
+	set t_Co=256		" 256 color mode
+	set cursorline	" highlight current line
+	highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
+	colors moria
+else
+	colors desert
+endif
+
+set clipboard=unnamed	" yank to the system register (*) by default
+set showmatch		" Cursor shows matching ) and }
+set showmode		" Show current mode
+set wildchar=<TAB>	" start wild expansion in the command line using <TAB>
+set wildmenu		" wild char completion menu
+
+" ignore these files while expanding wild chars
+set wildignore+=.svn,CVS,.git 
+set wildignore+=*.o,*.a,*.class,*.mo,*.la,*.so,*.lo,*.la,*.obj,*.pyc
+set wildignore+=*.exe,*.zip,*.jpg,*.png,*.gif,*.jpeg 
+
+set autoindent		" auto indentation
+set incsearch		" incremental search
+set backup			" save backup files
+set backupdir=~/.vim/bak	" where to put backup file
+set dir=~/.vim/tmp	" tell vim where to put swap files
+set copyindent		" copy the previous indentation on autoindenting
+set ignorecase		" ignore case when searching
+set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
+set nosmarttab		" insert tabs on the start of a line according to context
+
+" disable sound on errors
+set noerrorbells visualbell t_vb=
+set tm=500
+
+" TAB setting
+"set noexpandtab		"DO-NOT replace <TAB> with spaces
+set expandtab		"DO-NOT replace <TAB> with spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+"---------------------------------------------
+" copy to system buffer
+"---------------------------------------------
+vnoremap <C-S-C> "+y<CR>
+map <C-S-c>  "+y<CR>
+map <C-S-v> "+p<CR>
+
+"--------------------------------------------------------------------------- 
+" ENCODING SETTINGS
+"--------------------------------------------------------------------------- 
+set encoding=utf-8                                  
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,gbk,big5,latin1
+
+"注释插件
+let g:DoxygenToolkit_commentType ="php"
+let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
+let g:DoxygenToolkit_paramTag_pre="@Param " 
+let g:DoxygenToolkit_returnTag="@Returns   " 
+"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
+"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
+let g:DoxygenToolkit_authorName="Liao" 
+let g:DoxygenToolkit_licenseTag="Mit"
