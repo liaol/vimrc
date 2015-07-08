@@ -39,7 +39,20 @@ syntax on			" syntax highlight
 set hlsearch		" search highlighting
 
 " terminal color settings
-colorscheme desert
+"colorscheme desert
+if has("gui_running")   " GUI color and font settings
+    "set guifont=Courier:h18
+    set background=dark 
+    set t_Co=256        " 256 color mode
+    set cursorline  " highlight current line
+    highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
+    colors solarized
+else
+    "colors desert
+    let g:solarized_termcolors=256
+    set background=dark 
+    colors solarized
+endif
 
 set clipboard=unnamed	" yank to the system register (*) by default
 set showmatch		" Cursor shows matching ) and }
@@ -97,9 +110,9 @@ let g:DoxygenToolkit_paramTag_pre="@param "
 let g:DoxygenToolkit_returnTag="@return " 
 "let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
 "let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
-let g:DoxygenToolkit_authorName="Liaol" 
+let g:DoxygenToolkit_authorName="Liaoliang" 
 let g:DoxygenToolkit_licenseTag="Mit"
-"let g:DoxygenToolkit_throwTag_pre = "@throw "
+let g:DoxygenToolkit_throwTag_pre = "@throw "
 
 "禁止ctrl+v变成粘贴
 noremap <C-V> <C-V>"
