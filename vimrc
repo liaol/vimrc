@@ -23,6 +23,9 @@ Plugin 'einars/js-beautify'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
+Plugin 'fatih/vim-go'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 "source ~/.vim/vimrc.vundle 
 filetype plugin indent on  
 
@@ -48,7 +51,7 @@ if has("gui_running")   " GUI color and font settings
     highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
     colors solarized
 else
-    "colors desert
+    set t_Co=256        " 256 color mode
     let g:solarized_termcolors=256
     set background=dark 
     colors solarized
@@ -101,6 +104,46 @@ set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,gbk,big5,latin1
 
+" status line
+set laststatus=2
+set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w
+"set statusline+=\ \ \ [%{&ff}/%Y] 
+set statusline+=\ \ \ %<%20.30(%{CurDir()}%)\ 
+"set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+set statusline+=\ \ \ %l/%L    " Current line
+set statusline+=\ \ \ \ \ \ %{strftime(\"%I:%M:%S\ %b-%d\")}%=Page\%N
+
+fun! CurDir()
+    let curdir = substitute(getcwd(), $HOME, "~", "")
+    return curdir
+endfun
+
+fun! HasPaste()
+    if &paste
+        return '[PASTE]'
+    else
+        return ''
+    endif
+endfun
+
+"--------------------------------------------------------------------------- 
+" USEFUL SHORTCUTS
+"--------------------------------------------------------------------------- 
+" set leader to ;
+let mapleader=";"
+let g:mapleader=";"
+
+"清除高亮
+nmap <leader>h :noh<CR>
+
+
+"--------------------
+" For phpDocumentor (pdv)
+"--------------------
+inoremap <leader>pd <ESC>:call PhpDocSingle()<CR>i 
+nnoremap <leader>pd :call PhpDocSingle()<CR> 
+vnoremap <leader>pd :call PhpDocRange()<CR> 
+
 "注释插件
 let g:DoxygenToolkit_commentType ="php"
 let g:DoxygenToolkit_briefTag_funcName= "yes"
@@ -117,11 +160,6 @@ let g:DoxygenToolkit_throwTag_pre = "@throw "
 "禁止ctrl+v变成粘贴
 noremap <C-V> <C-V>"
 
-" set leader to ;
-let mapleader=";"
-let g:mapleader=";"
-
-"
 "" --- NERDTree
 nnoremap <silent> <F9> :NERDTreeTabsToggle<CR>
 nnoremap <leader>n :NERDTreeTabsToggle<CR>
@@ -154,3 +192,15 @@ function! ToggleFocusMode()
 endfunc
 nnoremap <F8> :call ToggleFocusMode()<cr>
 
+" --- Syntastic
+nnoremap <silent> <F6> :SyntasticCheck<CR>
+nnoremap <leader>sy :SyntasticCheck<CR>
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_jump = 1
+
+"--------------------
+" For phpDocumentor (pdv)
+"--------------------
+inoremap <leader>pd <ESC>:call PhpDocSingle()<CR>i 
+nnoremap <leader>pd :call PhpDocSingle()<CR> 
+vnoremap <leader>pd :call PhpDocRange()<CR> 
