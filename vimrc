@@ -15,17 +15,17 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
-Plugin 'gmarik/vundle'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
-Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'majutsushi/tagbar'
-Plugin 'fatih/vim-go'
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
+Bundle 'gmarik/vundle'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'vim-scripts/DoxygenToolkit.vim'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'einars/js-beautify'
+Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'majutsushi/tagbar'
+Bundle 'fatih/vim-go'
+"Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 "source ~/.vim/vimrc.vundle 
 filetype plugin indent on  
 
@@ -37,6 +37,7 @@ set nu				" show line numbers
 
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd! bufwritepost .gvimrc source ~/.gvimrc
 
 syntax on			" syntax highlight
 set hlsearch		" search highlighting
@@ -44,16 +45,16 @@ set hlsearch		" search highlighting
 " terminal color settings
 "colorscheme desert
 if has("gui_running")   " GUI color and font settings
-    "set guifont=Courier:h18
+    set guifont=Monaco:h14
     set background=dark 
-    set t_Co=256        " 256 color mode
+    "set t_Co=256        " 256 color mode
     set cursorline  " highlight current line
     highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
     colors solarized
 else
     set t_Co=256        " 256 color mode
     let g:solarized_termcolors=256
-    set background=dark 
+    set background=dark
     colors solarized
 endif
 
@@ -169,7 +170,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "" tagbar
 nmap <F7> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1 " 打开tagbar的时候，光标自动聚焦到tagbar上面
-let g:tagbar_autoclose = 1 " 打按回车，跳到某个方法后，自动关闭tagbar
+let g:tagbar_autoclose = 0 " 打按回车，跳到某个方法后，自动关闭tagbar
 
 
 """ FocusMode
@@ -195,12 +196,6 @@ nnoremap <F8> :call ToggleFocusMode()<cr>
 " --- Syntastic
 nnoremap <silent> <F6> :SyntasticCheck<CR>
 nnoremap <leader>sy :SyntasticCheck<CR>
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_auto_jump = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_auto_jump = 1
 
-"--------------------
-" For phpDocumentor (pdv)
-"--------------------
-inoremap <leader>pd <ESC>:call PhpDocSingle()<CR>i 
-nnoremap <leader>pd :call PhpDocSingle()<CR> 
-vnoremap <leader>pd :call PhpDocRange()<CR> 
