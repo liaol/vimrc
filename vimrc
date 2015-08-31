@@ -15,18 +15,25 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'vim-scripts/DoxygenToolkit.vim'
-Bundle 'maksimr/vim-jsbeautify'
-Bundle 'einars/js-beautify'
-Bundle 'scrooloose/nerdtree'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'majutsushi/tagbar'
-Bundle 'fatih/vim-go'
-"Bundle 'scrooloose/syntastic'
-Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/vundle'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
+Plugin 'scrooloose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
+Plugin 'tpope/vim-fugitive'
 "source ~/.vim/vimrc.vundle 
+Plugin 'fatih/vim-go'
+"Plugin 'Shougo/neocomplete'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'Valloric/YouCompleteMe'
 filetype plugin indent on  
 
 set bs=indent,eol,start	" allow backspacing over everything in insert mode
@@ -57,6 +64,7 @@ else
     set background=dark
     colors solarized
 endif
+
 
 set clipboard=unnamed	" yank to the system register (*) by default
 set showmatch		" Cursor shows matching ) and }
@@ -172,30 +180,19 @@ nmap <F7> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1 " 打开tagbar的时候，光标自动聚焦到tagbar上面
 let g:tagbar_autoclose = 0 " 打按回车，跳到某个方法后，自动关闭tagbar
 
-
-""" FocusMode
-function! ToggleFocusMode()
-    if (&foldcolumn != 12)
-        set laststatus=0
-        set numberwidth=10
-        set foldcolumn=12
-        set noruler
-        hi FoldColumn ctermbg=none
-        hi LineNr ctermfg=0 ctermbg=none
-        hi NonText ctermfg=0
-    else
-        set laststatus=2
-        set numberwidth=4
-        set foldcolumn=0
-        set ruler
-        execute 'colorscheme ' . g:colors_name
-    endif
-endfunc
-nnoremap <F8> :call ToggleFocusMode()<cr>
-
 " --- Syntastic
 nnoremap <silent> <F6> :SyntasticCheck<CR>
 nnoremap <leader>sy :SyntasticCheck<CR>
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_jump = 1
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_quiet_messages = { "level": "warnings" }
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
 
