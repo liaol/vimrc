@@ -34,6 +34,10 @@ Plugin 'fatih/vim-go'
 "Plugin 'Shougo/neosnippet-snippets'
 "Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'easymotion/vim-easymotion'
 filetype plugin indent on  
 
 set bs=indent,eol,start	" allow backspacing over everything in insert mode
@@ -92,8 +96,8 @@ set noerrorbells visualbell t_vb=
 set tm=500
 
 " TAB setting
-set noexpandtab		"DO-NOT replace <TAB> with spaces
-set expandtab		"DO-NOT replace <TAB> with spaces
+" set noexpandtab		"DO-NOT replace <TAB> with spaces
+set expandtab		"replace <TAB> with spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -155,7 +159,7 @@ vnoremap <leader>pd :call PhpDocRange()<CR>
 
 "注释插件
 let g:DoxygenToolkit_commentType ="php"
-let g:DoxygenToolkit_briefTag_funcName= "yes"
+let g:DoxygenToolkit_briefTag_funcName= "no"
 let g:doxygen_enhanced_color=1
 let g:DoxygenToolkit_briefTag_pre="" 
 let g:DoxygenToolkit_paramTag_pre="@param " 
@@ -185,8 +189,8 @@ nnoremap <silent> <F6> :SyntasticCheck<CR>
 nnoremap <leader>sy :SyntasticCheck<CR>
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_auto_jump = 1
-"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_quiet_messages = { "level": "warnings" }
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_quiet_messages = { "level": "warning" }
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -195,4 +199,11 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
+"禁用自动补全提示窗口
+set completeopt-=preview
 
+"禁用newline at end of file
+"以免跟其他人使用的其他编辑器冲突
+set binary
+set noeol
+autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
