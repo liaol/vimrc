@@ -33,11 +33,16 @@ Plugin 'fatih/vim-go'
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets'
 "Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'rizzatti/dash.vim'
+
+"旧版本不兼容
+if v:version > 703
+  Plugin 'Valloric/YouCompleteMe'
+endif
 filetype plugin indent on  
 
 set bs=indent,eol,start	" allow backspacing over everything in insert mode
@@ -191,6 +196,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_quiet_messages = { "level": "warning" }
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
