@@ -211,6 +211,6 @@ set completeopt-=preview
 
 "禁用newline at end of file
 "以免跟其他人使用的其他编辑器冲突
-set binary
-set noeol
+autocmd FileType php setlocal noeol binary fileformats="mac,unix,dos"
+
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
