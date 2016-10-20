@@ -1,4 +1,4 @@
-set shell=/bin/bash
+"shell=/bin/bash
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 if !filereadable(vundle_readme)
@@ -20,7 +20,7 @@ Plugin 'gmarik/vundle'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
+"Plugin 'einars/js-beautify'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
@@ -37,11 +37,17 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'rizzatti/dash.vim'
+"Plugin 'rizzatti/dash.vim'
+"Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-misc'
+Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'posva/vim-vue'
+Plugin 'mileszs/ack.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 "旧版本不兼容
 if v:version > 703
-  Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Valloric/YouCompleteMe'
 endif
 filetype plugin indent on  
 
@@ -211,6 +217,20 @@ set completeopt-=preview
 
 "禁用newline at end of file
 "以免跟其他人使用的其他编辑器冲突
-autocmd FileType php setlocal noeol binary fileformats="mac,unix,dos"
+autocmd FileType php setlocal noeol binary fileformats+=dos
 
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
+
+
+let g:easytags_async = 1
+"set transparency=8
+
+" php-cs-fixer
+nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+let g:ycm_server_python_interpreter = '/usr/bin/python'
+
+" ack用ag搜索
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
