@@ -2,3 +2,7 @@
 vim/.netrwhist
 
 vim/.netrwhist
+vim/plugged
+vim/sessions
+vim/tmp/*
+vim/bak/*

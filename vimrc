@@ -44,6 +44,8 @@ Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'posva/vim-vue'
 Plugin 'mileszs/ack.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 "旧版本不兼容
 if v:version > 703
@@ -69,7 +71,6 @@ set hlsearch		" search highlighting
 if has("gui_running")   " GUI color and font settings
     set guifont=Monaco:h14
     set background=dark 
-    "set t_Co=256        " 256 color mode
     set cursorline  " highlight current line
     highlight CursorLine  guibg=#003853 ctermbg=24  gui=none cterm=none
     colors solarized
@@ -191,7 +192,7 @@ nnoremap <leader>n :NERDTreeTabsToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "" tagbar
-nmap <F7> :TagbarToggle<CR>
+nnoremap <silent> <F7> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1 " 打开tagbar的时候，光标自动聚焦到tagbar上面
 let g:tagbar_autoclose = 0 " 打按回车，跳到某个方法后，自动关闭tagbar
 
@@ -217,7 +218,7 @@ set completeopt-=preview
 
 "禁用newline at end of file
 "以免跟其他人使用的其他编辑器冲突
-autocmd FileType php setlocal noeol binary fileformats+=dos
+"autocmd FileType php setlocal noeol binary fileformats+=dos
 
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
 
@@ -234,3 +235,5 @@ let g:ycm_server_python_interpreter = '/usr/bin/python'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+ let $PATH = '/usr/local/bin:'.$PATH
